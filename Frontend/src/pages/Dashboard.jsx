@@ -16,7 +16,7 @@ function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/dashboard");
+      const res = await axios.get("http://staffing-suite.onrender.com/api/dashboard");
       setStats(res.data);
     } catch (err) {
       console.error(err);

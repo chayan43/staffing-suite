@@ -8,7 +8,7 @@ function Departments() {
 
   const fetchDepartments = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/departments");
+      const res = await axios.get("https://staffing-suite.onrender.com/api/employees");
       setDepartments(res.data);
     } catch (err) { console.log(err); }
   };
@@ -19,10 +19,10 @@ function Departments() {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/departments/${editingId}`, form);
+        await axios.put(`https://staffing-suite.onrender.com/api/departments${editingId}`, form);
         alert("✅ Department Updated");
       } else {
-        await axios.post("http://localhost:5000/api/departments", form);
+        await axios.post("https://staffing-suite.onrender.com/api/departments", form);
         alert("✅ Department Added");
       }
       setForm({ name: "", manager: "" });
@@ -40,7 +40,7 @@ function Departments() {
   const deleteDepartment = async (id) => {
     if (!window.confirm("Delete this department?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/departments/${id}`);
+      await axios.delete(`https://staffing-suite.onrender.com/api/departments/${id}`);
       fetchDepartments();
     } catch (err) { console.log(err); }
   };

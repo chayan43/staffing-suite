@@ -14,7 +14,7 @@ function LeaveManagement() {
 
   const fetchLeaves = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/leaves");
+      const res = await axios.get("http://staffing-suite.onrender.com/api/leaves");
       setLeaves(res.data);
     } catch (err) { console.log(err); }
   };
@@ -24,7 +24,7 @@ function LeaveManagement() {
   const addLeave = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/leaves", form);
+      await axios.post("http://staffing-suite.onrender.com/api/leaves", form);
       setForm({ employee_name: "", leave_type: "", start_date: "", end_date: "", reason: "" });
       fetchLeaves();
       alert("✅ Leave Request Submitted");
@@ -33,14 +33,14 @@ function LeaveManagement() {
 
   const approveLeave = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/leaves/approve/${id}`);
+      await axios.put(`http://staffing-suite.onrender.com/api/leaves/approve/${id}`);
       fetchLeaves();
     } catch (err) { console.log(err); }
   };
 
   const rejectLeave = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/leaves/reject/${id}`);
+      await axios.put(`http://staffing-suite.onrender.com/api/leaves/reject/${id}`);
       fetchLeaves();
     } catch (err) { console.log(err); }
   };

@@ -31,7 +31,7 @@ const addEmployee = async (req, res) => {
       "EMP-" + Math.floor(100000 + Math.random() * 900000).toString();
 
     const photo = req.file
-      ? `http://localhost:5000/uploads/${req.file.filename}`
+      ? `http://staffing-suite.onrender.com/uploads/${req.file.filename}`
       : null;
 
     console.log("ADD - req.body:", req.body);
@@ -75,7 +75,7 @@ const updateEmployee = async (req, res) => {
     // If new file uploaded use it, else keep existing photo from DB
     let photo;
     if (req.file) {
-      photo = `http://localhost:5000/uploads/${req.file.filename}`;
+      photo = `http://staffing-suite.onrender.com/uploads/${req.file.filename}`;
     } else {
       // Fetch current photo from DB so we don't overwrite with null
       const current = await pool.query(

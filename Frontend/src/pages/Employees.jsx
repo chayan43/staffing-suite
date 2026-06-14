@@ -32,7 +32,7 @@ function Employees() {
 
   const fetchEmployees = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/employees");
+      const res = await axios.get("http://staffing-suite.onrender.com/api/employees");
       setEmployees(res.data);
     } catch (err) {
       console.error("Fetch error:", err);
@@ -67,12 +67,12 @@ function Employees() {
       }
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/employees/${editingId}`, formData, {
+        await axios.put(`http://staffing-suite.onrender.com/api/employees/${editingId}`, formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         alert("✅ Employee Updated");
       } else {
-        await axios.post("http://localhost:5000/api/employees", formData, {
+        await axios.post("http://staffing-suite.onrender.com/api/employees", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         alert("✅ Employee Added");
@@ -102,7 +102,7 @@ function Employees() {
   const deleteEmployee = async (id) => {
     if (!window.confirm("Are you sure you want to delete this employee?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/employees/${id}`);
+      await axios.delete(`http://staffing-suite.onrender.com/api/employees/${id}`);
       fetchEmployees();
       alert("✅ Employee Deleted");
     } catch (err) {
